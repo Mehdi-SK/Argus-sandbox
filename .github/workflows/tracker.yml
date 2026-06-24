@@ -1,0 +1,15 @@
+name: Track Contribution
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  track:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tracker
+        uses: Mehdi-SK/contribution-harvester@dev
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
